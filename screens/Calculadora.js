@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import {NumberCustom} from './components/TextInput/Number'
+import {ModalCustom} from './components/Modal/Modal'
 import { Text, View, Button } from 'react-native';
 
 export default function App() {
@@ -8,7 +9,8 @@ export default function App() {
 
   const [altura, SetAltura] = useState('')
   const [peso, SetPeso] = useState('')
-
+  
+  const [modalVisible,SetModalVisible]= useState(false)
   const [result, SetResult] = useState('')
   const decorator = (imc) =>{
     if(imc < 16){ return 'Muito abaixo do peso'}
@@ -23,6 +25,7 @@ export default function App() {
   const calc = ()=>{
     var imc = peso / (altura * altura)
     SetResult(isNaN(imc)?'Digite um número valido': decorator(imc))
+    SetModalVisible(true)
   }
 
   const hasAltura = (txt) =>{
@@ -34,8 +37,17 @@ export default function App() {
     SetErrorPeso((isNaN(txt))? 'Digite um número valido':'')
   }
 
+  const modalCallBack=(visible)=>{ SetModalVisible(visible)}
+
   return (
     <View>
+      <ModalCustom
+        title='Seu indice de massa corporal(IMC)'
+        descrition={result}
+        button = 'OK'
+        modalVisible={modalVisible}
+        modalCallBack={modalCallBack}
+      />
       <NumberCustom
       error={errorAltura}
       placeholder='Digite a sua altura'
@@ -53,7 +65,6 @@ export default function App() {
       <Button 
         onPress={()=>{ calc() }}
       />
-      <Text>{result}</Text>
     </View>
   );
 }
