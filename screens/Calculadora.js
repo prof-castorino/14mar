@@ -1,9 +1,9 @@
 import React,{useState} from 'react';
-import {NumberCustom} from './components/TextInput/Number'
-import {ModalCustom} from './components/Modal/Modal'
-import { Text, View, Button } from 'react-native';
+import {NumberCustom} from '../components/TextInput/Number'
+import {ModalCustom} from '../components/Modal/Modal'
+import { View, Button } from 'react-native';
 
-export default function App() {
+export const Calculadora = () =>{
   const [errorAltura, SetErrorAltura] = useState('')
   const [errorPeso, SetErrorPeso] = useState('')
 
@@ -30,7 +30,7 @@ export default function App() {
 
   const hasAltura = (txt) =>{
     SetAltura(txt)
-    SetErrorAltura((isNaN(txt) || a >=3)? 'Digite um número valido':'')
+    SetErrorAltura((isNaN(txt) || txt >=3)? 'Digite um número valido':'')
   }
   const hasPeso = (txt) =>{
     SetPeso(txt)
@@ -44,7 +44,7 @@ export default function App() {
       <ModalCustom
         title='Seu indice de massa corporal(IMC)'
         descrition={result}
-        button = 'OK'
+        txtbutton = 'OK'
         modalVisible={modalVisible}
         modalCallBack={modalCallBack}
       />
@@ -58,11 +58,12 @@ export default function App() {
       <NumberCustom
       error={errorPeso}
       placeholder='Digite a sua peso'
-      maxLength={4}
+      maxLength={3}
       item={peso}
       hasItem={hasPeso}
       />
       <Button 
+        title='Calcular'
         onPress={()=>{ calc() }}
       />
     </View>

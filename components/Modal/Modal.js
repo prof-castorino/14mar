@@ -16,7 +16,7 @@ export const ModalCustom = props => {
                         style={[styles.button, styles.buttonClose]}  
                         onPress={()=>{props.modalCallBack(false)}}  
                     >
-                        <Text style={styles.textStyle} >{props.button}</Text>
+                        <Text style={styles.textStyle} >{props.txtbutton}</Text>
                     </Pressable>
                 </View>
             </View>

@@ -1,4 +1,4 @@
-import { View, StyleSheet } from "react-native"
+import { View, StyleSheet, TextInput, Text } from "react-native"
 
 export const NumberCustom = props =>{
     return(
