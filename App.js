@@ -1,12 +1,12 @@
 import React from 'react';
-import {Calculadora} from './screens/Calculadora'
-import { StyleSheet, Text, View } from 'react-native';
+import { Products } from './src/screens/Products'
+import { Calculadora } from './src/screens/Calculadora'
+import { StyleSheet, View } from 'react-native';
 
 const App = () => {
   return (
     <View style={styles.container}>
-      <Text>Calculadora de IMC</Text>      
-      <Calculadora/>
+      <Products />
     </View>
   );
 }
@@ -19,5 +19,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  }  
+  }
 });
