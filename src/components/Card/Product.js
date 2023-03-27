@@ -18,6 +18,11 @@ export const ProductCard = props => {
         <View style={styles.card}>
             <View style={styles.square}>
                 <Image style={styles.img} source={props.img} />
+                <Text onPress={() =>
+                    props.navigation.navigate('Detalhes', { ...props })
+                }>
+                    Veja mais Detalhes
+                </Text>
             </View>
             <View style={[styles.square, styles.info]}>
                 <Text style={styles.title}>{props.title}</Text>
@@ -60,7 +65,9 @@ const styles = StyleSheet.create({
     square: { width: '50%' },
     img: {
         width: '100%',
-        height: 150
+        height: 190,
+        borderTopLeftRadius: 20,
+        borderBottomLeftRadius: 20
     },
     info: {
         padding: 20
@@ -76,6 +83,7 @@ const styles = StyleSheet.create({
         width: '50%',
         borderRadius: 20,
         padding: 20,
+        margin: 3,
         elevation: 2
     },
     buttonClose: {
