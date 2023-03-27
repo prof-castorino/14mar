@@ -1,6 +1,23 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, Pressable, Image } from 'react-native'
 
+
+export const ProductDetails = props => {
+    return (
+        <View >
+            <View style={styles.cardDetails}>
+                <Image style={styles.imgDetails} source={props.img} />
+            </View>
+            <View style={styles.infoDetails}>
+                <Text style={styles.title}>{props.title}</Text>
+                <Text >{props.descritionAll}</Text>
+                <Text ><Text style={styles.bold}>R$</Text>{props.price}</Text>
+            </View>
+        </View>
+    )
+}
+
+
 export const ProductCard = props => {
     const [getQtd, setQtd] = useState(0)
     const add = () => {
@@ -18,7 +35,7 @@ export const ProductCard = props => {
         <View style={styles.card}>
             <View style={styles.square}>
                 <Image style={styles.img} source={props.img} />
-                <Text onPress={() =>
+                <Text style={styles.details} onPress={() =>
                     props.navigation.navigate('Detalhes', { ...props })
                 }>
                     Veja mais Detalhes
@@ -48,11 +65,23 @@ export const ProductCard = props => {
     )
 }
 const styles = StyleSheet.create({
+    cardDetails: {
+        width: '100%'
+    },
+    imgDetails: {
+        width: '100%',
+        height: 250
+    },
+    infoDetails: {
+        width: '100%',
+        padding: 20,
+    },
     cardButton: {
         flex: 2,
         flexDirection: "row"
     },
     card: {
+        backgroundColor: "#ffffff",
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
@@ -63,6 +92,12 @@ const styles = StyleSheet.create({
         borderColor: 'grey'
     },
     square: { width: '50%' },
+    details: {
+        marginTop: -39,
+        backgroundColor: "#ffffff",
+        borderBottomLeftRadius: 20,
+        padding: 10
+    },
     img: {
         width: '100%',
         height: 190,

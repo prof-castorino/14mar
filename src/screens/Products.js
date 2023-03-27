@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Text, ScrollView } from "react-native";
-import { ProductCard } from "../components/Card/Product"
+import { ProductCard, ProductDetails } from "../components/Card/Product"
 import { getProducts } from "../context/Products/Products";
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -24,7 +24,7 @@ export const ProductsScreen = () => {
     )
 }
 const Details = ({ navigation, route }) => {
-    return (<View></View>)
+    return (<ProductDetails {...route.params} />)
 }
 const Products = ({ navigation }) => {
     const [getTotal, setTotal] = useState(0)
