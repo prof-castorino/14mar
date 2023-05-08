@@ -4,19 +4,18 @@ import { StyleSheet, Text, View, Pressable, Image } from 'react-native'
 
 export const ProductDetails = props => {
     return (
-        <View >
-            <View style={styles.cardDetails}>
-                <Image style={styles.imgDetails} source={props.img} />
-            </View>
-            <View style={styles.infoDetails}>
+        <View style={styles.details} >
+            <Image style={styles.detailsImg} source={props.img} />
+
+            <View style={[styles.info]}>
                 <Text style={styles.title}>{props.title}</Text>
+                <Text >{props.descrition}</Text>
                 <Text >{props.descritionAll}</Text>
                 <Text ><Text style={styles.bold}>R$</Text>{props.price}</Text>
             </View>
         </View>
     )
 }
-
 
 export const ProductCard = props => {
     const [getQtd, setQtd] = useState(0)
@@ -35,11 +34,9 @@ export const ProductCard = props => {
         <View style={styles.card}>
             <View style={styles.square}>
                 <Image style={styles.img} source={props.img} />
-                <Text style={styles.details} onPress={() =>
+                <Text style={styles.details} onPress={() => {
                     props.navigation.navigate('Detalhes', { ...props })
-                }>
-                    Veja mais Detalhes
-                </Text>
+                }}>Veja detalhes do produto</Text>
             </View>
             <View style={[styles.square, styles.info]}>
                 <Text style={styles.title}>{props.title}</Text>
@@ -65,16 +62,16 @@ export const ProductCard = props => {
     )
 }
 const styles = StyleSheet.create({
-    cardDetails: {
-        width: '100%'
-    },
-    imgDetails: {
+    details: {
         width: '100%',
-        height: 250
+        backgroundColor: "#ffffff",
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 22
     },
-    infoDetails: {
+    detailsImg: {
         width: '100%',
-        padding: 20,
     },
     cardButton: {
         flex: 2,
